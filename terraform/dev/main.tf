@@ -6,7 +6,7 @@ provider "docker" {
 # Create a container
 resource "docker_container" "foo_dev" {
   image = "${docker_image.nginx.latest}"
-  name  = "foo_dev"
+  name  = "foo_dev_test_1"
 
   ports {
     internal = 80
