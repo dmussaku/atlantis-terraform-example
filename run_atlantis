@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cd atlantis-0.11.1
-go run main.go server --atlantis-url=https://43639172.ngrok.io \
-					  --gh-user=dmussaku \
-					  --gh-token=5c982734ac7c6a8c2fa0853386220b2bb7598b0c \
-					  --gh-webhook-secret=somesecret \
-					  --repo-whitelist='*'

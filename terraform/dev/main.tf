@@ -6,7 +6,7 @@ provider "docker" {
 # Create a container
 resource "docker_container" "foo_dev" {
   image = "${docker_image.nginx.latest}"
-  name  = "foo_dev_test_1"
+  name  = "foo_dev"
 
   ports {
     internal = 80
@@ -15,5 +15,5 @@ resource "docker_container" "foo_dev" {
 }
 
 resource "docker_image" "nginx" {
-  name = "nginx:latest"
+  name = "nginx:1.16.1-alpine"
 }
