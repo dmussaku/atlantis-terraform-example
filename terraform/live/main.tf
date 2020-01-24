@@ -15,5 +15,5 @@ resource "docker_container" "foo_live" {
 }
 
 resource "docker_image" "nginx" {
-  name = "nginx:stable"
+  name = "nginx:latest"
 }
