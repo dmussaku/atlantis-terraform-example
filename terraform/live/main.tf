@@ -15,5 +15,5 @@ resource "docker_container" "foo_live" {
 }
 
 resource "docker_image" "nginx" {
-  name = "nginx:latest"
+  name = "nginx:1.16.1-alpine"
 }
