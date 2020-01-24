@@ -15,5 +15,5 @@ resource "docker_container" "foo_stg" {
 }
 
 resource "docker_image" "nginx" {
-  name = "nginx:1.16.1-alpine"
+  name = "nginx:stable"
 }
