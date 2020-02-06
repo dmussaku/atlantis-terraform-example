@@ -1,19 +1,46 @@
-# Configure the Docker provider
-provider "docker" {
-  host = "unix:///var/run/docker.sock"
+# Configure the Kubernetes provider
+provider "kubernetes" {
+  host                     = "https://localhost:6443"
+  config_context_auth_info = "docker-desktop"
+  config_context_cluster   = "docker-desktop"
 }
 
-# Create a container
-resource "docker_container" "foo_live" {
-  image = "${docker_image.nginx.latest}"
-  name  = "foo_live"
+# Create a Deployment
+resource "kubernetes_deployment" "nginx" {
+  metadata {
+    name = "nginx-live-example"
 
-  ports {
-    internal = 80
-    external = 3161
+    labels = {
+      App = "nginx-live"
+    }
   }
-}
 
-resource "docker_image" "nginx" {
-  name = "nginx:stable"
+  spec {
+    replicas = 2
+
+    selector {
+      match_labels = {
+        App = "nginx-live"
+      }
+    }
+
+    template {
+      metadata {
+        labels = {
+          App = "nginx-live"
+        }
+      }
+
+      spec {
+        container {
+          image = "nginx:1.7.8"
+          name  = "live-example"
+
+          port {
+            container_port = 3030
+          }
+        }
+      }
+    }
+  }
 }
