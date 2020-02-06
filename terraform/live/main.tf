@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "nginx" {
 
       spec {
         container {
-          image = "nginx:1.7.8"
+          image = "nginx:1.7.9"
           name  = "live-example"
 
           port {
